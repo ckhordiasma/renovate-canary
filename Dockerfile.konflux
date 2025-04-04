@@ -1,1 +1,1 @@
-FROM registry.redhat.io/ubi8/python-312@sha256:478e3bedfdd6ea09ea2e17015405fa44867564dbcbc9908d400bd27f5432fe28
+FROM registry.redhat.io/ubi8/python-312@sha256:47056fa31a255ebd2b08c469b25e6ee5f516280937c024c40372de9e9cc492d5
