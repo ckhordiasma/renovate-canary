@@ -23,11 +23,11 @@
       },
       {
         "matchManagers": ["tekton"],
-        "matchBaseBranches": ["rhoai-2.18"],
+        "matchBaseBranches": ["rhoai-2.19"],
         "matchUpdateTypes": ["digest", "minor"],
         "enabled": true,
         "groupName": "Tekton Updates",
-        "branchPrefix": "renovate/tekton-rhoai-2.16/",
+        "branchPrefix": "renovate/tekton-rhoai-test/",
         "semanticCommits": "enabled",
         "prFooter": "To execute skipped test pipelines write comment `/ok-to-test`",
         "matchPackageNames": [
@@ -94,7 +94,7 @@
           "groupName": "Konflux references",
           "branchPrefix": "konflux/references/",
           "semanticCommits": "enabled",
-          "prFooter": "To execute skipped test pipelines write comment `/ok-to-test`",
+          "prFooter": "To execute skipped test pipelines write comment `/ok-to-test` (test edit)",
           "prBodyColumns": ["Package", "Change", "Notes"],
           "prBodyDefinitions": {
             "Notes": "{{#if (or (containsString updateType 'minor') (containsString updateType 'major'))}}:warning:[migration](https://github.com/redhat-appstudio/build-definitions/blob/main/task/{{{replace '^quay.io/(redhat-appstudio-tekton-catalog|konflux-ci/tekton-catalog)/task-' '' packageName}}}/{{{newVersion}}}/MIGRATION.md):warning:{{/if}}"
