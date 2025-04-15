@@ -1,1 +1,20 @@
-FROM registry.redhat.io/ubi8/python-312@sha256:47056fa31a255ebd2b08c469b25e6ee5f516280937c024c40372de9e9cc492d5
+FROM registry.redhat.io/ubi8/go-toolset:1.22@sha256:a1a37882bbcf1c0f1115d478d5ea9f74b496b8c753d5e4e431a70786e2dbcbfc AS builder
+
+# Emulating https://github.com/red-hat-data-services/data-science-pipelines/blob/rhoai-2.20
+
+USER root
+
+RUN dnf update -y && \
+    dnf install -y cmake clang openssl
+
+FROM registry.redhat.io/ubi8/ubi-minimal@sha256:33161cf5ec11ea13bfe60cad64f56a3aa4d893852e8ec44b2fd2a6b40cc38539
+
+
+USER root
+
+# Adding CA certificate so API server can download pipeline through URL and wget is used for liveness/readiness probe command
+RUN microdnf install -y ca-certificates wget
+
+USER 1001
+
+CMD /bin/bash
