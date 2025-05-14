@@ -87,9 +87,20 @@
        "semanticCommits": "enabled"
       },
       {
-        "matchManagers": ["dockerfile"],
-        "matchBaseBranches": ["rhoai-2.19"],
-        "enabled": false
+      "matchPaths": ["params.env"],
+      "matchManagers": ["regex"],
+      "regex": [
+        {
+          "fileMatch": ["params\\.env$"],
+          "matchStrings": [
+            "registry\.redhat\.io/openshift4/ose-oauth-proxy@sha256:(?<currentValue>[a-f0-9]+)$"
+          ],
+          "depName": "ose-oauth-proxy", 
+          "depType": "docker",
+          "datasource": "docker"
+        }
+      ]
+    }
       }
     ],
     "dockerfile": {
